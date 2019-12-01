@@ -3,7 +3,7 @@
     <label for="nome">Nome</label>
     <input id="nome" name="nome" type="text" v-model="produto.nome">
     <label for="preco">Preço (R$)</label>
-    <input id="preco" name="preco" type="text" v-model="produto.preco">
+    <input id="preco" name="preco" type="number" v-model="produto.preco">
     <label for="fotos">Fotos</label>
     <input id="fotos" name="fotos" type="file" ref="fotos">
     <label for="preco">Descrição</label>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
 import { api } from "@/services.js";
 
 export default {

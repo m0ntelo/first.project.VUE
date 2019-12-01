@@ -15,13 +15,12 @@
       <div v-else-if="produtos && produtos.length === 0" key="sem-resultados">
         <p class="sem-resultados">Busca sem resultados. Tente buscar outro termo.</p>
       </div>
-      <PaginaCarregando key="carregando" v-else />
+      <PaginaCarregando key="carregando" v-else/>
     </transition>
   </section>
 </template>
 
 <script>
-
 import ProdutosPaginar from "@/components/ProdutosPaginar.vue";
 import { api } from "@/services.js";
 import { serialize } from "@/helpers.js";
@@ -52,7 +51,7 @@ export default {
           this.produtosTotal = Number(response.headers["x-total-count"]);
           this.produtos = response.data;
         });
-      }, 1500)
+      }, 1500);
     }
   },
   watch: {

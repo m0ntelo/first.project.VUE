@@ -12,17 +12,16 @@
         <p class="descricao">{{produto.descricao}}</p>
         <transition mode="out-in" v-if="produto.vendido === 'false'">
           <button class="btn" v-if="!finalizar" @click="finalizar = true">Comprar</button>
-          <FinalizarCompra v-else :produto="produto" />
+          <FinalizarCompra v-else :produto="produto"/>
         </transition>
-        <button class="btn" v-else disabled>Produto vendido</button>
+        <button v-else class="btn" disabled>Produto Vendido</button>
       </div>
     </div>
-    <PaginaCarregando v-else />
+    <PaginaCarregando v-else/>
   </section>
 </template>
 
 <script>
-
 import { api } from "@/services.js";
 import FinalizarCompra from "@/components/FinalizarCompra.vue";
 
@@ -48,11 +47,11 @@ export default {
   created() {
     this.getProduto();
   }
-}
+};
 </script>
 
 <style scoped>
- .produto {
+.produto {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
