@@ -1,24 +1,25 @@
 # ranek
 
-## Project setup
+## JSON Server Install
+```	
+npm install -g json-server
 ```
-yarn install
+
+## Start JSON Server
+```	
+json-server --watch db.json
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+npm run server
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
