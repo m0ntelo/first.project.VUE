@@ -30,13 +30,38 @@ export default {
   },
   methods: {
     formatarProduto() {
-      this.produto.usuario_id = this.$store.state.usuario.id;
+
+      const form = new FormData();
+
+      const files = this.$refs.fotos.files;
+
+      for(let i = 0; i < files.length; i++) {
+        form.append(files[i].name, files[i]);
+      }
+
+      form.append("nome", this.produto.nome);
+      form.append("preco", this.produto.preco);
+      form.append("descricao", this.produto.descricao);
+      form.append("vendido", this.produto.vendido);
+      form.append("usuario_id", this.produto.vendido);
+      
+      return form;
+
     },
-    adicionarProduto() {
-      this.formatarProduto();
-      api.post("/produto", this.produto).then(() => {
-        this.$store.dispatch("getUsuarioProdutos");
-      });
+    async adicionarProduto(event) {
+      
+      const produto = this.formatarProduto();
+
+      const button = event.currentTarget;
+      button.value = "Adicionando...";
+      button.setAttribute("disabled", "");
+
+      await api.post("/produto", produto);
+      await this.$store.dispatch("getUsuarioProdutos");
+
+      button.value = "Adicionar Produto";
+      button.removeAttribute("disabled");
+
     }
   }
 };

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const url = "http://192.168.0.8/ranek-api/wp-json";
+
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.0.8/ranek-api/wp-json/api"
+  baseURL: url + "/api"
 });
 
 axiosInstance.interceptors.request.use(
@@ -31,15 +33,10 @@ export const api = {
     return axiosInstance.delete(endpoint);
   },
   login(body) {
-    return axios.post(
-      "http://192.168.0.8/ranek-api/wp-json/jwt-auth/v1/token",
-      body
-    );
+    return axios.post(url + "/jwt-auth/v1/token", body);
   },
   validateToken() {
-    return axios.post(
-      "http://192.168.0.8/ranek-api/wp-json/jwt-auth/v1/token/validate"
-    );
+    return axiosInstance.post(url + "/jwt-auth/v1/token/validate");
   }
 };
 
